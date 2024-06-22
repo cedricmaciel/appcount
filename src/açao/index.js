@@ -16,7 +16,8 @@ function Acao() {
 
     const [gastoParaApagar, setGastoParaApagar] = useState(null); 
     const [rendaParaApagar, setRendaParaApagar] = useState(null);
-
+    
+// parte do codigo para abrir e fechar o editor de excluir coisas da lista 
     const closeeditor = () =>{
         setTelaEditor(false);
     }
@@ -51,6 +52,7 @@ function Acao() {
         const nomeGasto = event.target.elements['gasto-text'].value.trim();
         const valorGasto = parseFloat(event.target.elements['gasto-valor'].value);
         
+        // hora e data no registrado no item da lista
         const options = {
             hour: 'numeric', minute: 'numeric',
             year: 'numeric', month: 'numeric', day: 'numeric'
@@ -111,7 +113,8 @@ function Acao() {
     const totalGastos = gastos.reduce((total, gasto) => total + gasto.valor, 0);
     const totalRendas = rendas.reduce((total, renda) => total + renda.valor, 0);
     const totalPoupado = totalRendas - totalGastos;
-
+    
+// código para o hora data no top do aplicativo
     const [dateTime, setDateTime] = useState(new Date());
 
     useEffect(() => {
