@@ -1,6 +1,6 @@
 // Signup.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useNavigation } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebaseConfig';
 import './loguin.css';
@@ -19,6 +19,11 @@ const Signup = () => {
       alert('Erro ao cadastrar usuário: ' + error.message);
     }
   };
+
+  const goToLogin = () => {
+    Navigate('/loguin');
+  };
+    
 
   return (
     <div className="login-container">
@@ -43,7 +48,9 @@ const Signup = () => {
           />
         </div>
         <button type="submit">Cadastrar</button>
-      </form>
+        
+      </form>"
+      <button className="btn-voltar" onClick={goToLogin}>Voltar</button>
     </div>
   );
 };

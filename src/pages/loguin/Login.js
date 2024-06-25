@@ -1,4 +1,3 @@
-// src/pages/loguin/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -18,6 +17,10 @@ const Login = () => {
     } catch (error) {
       alert('Credenciais inválidas: ' + error.message);
     }
+  };
+
+  const goToSignup = () => {
+    navigate('/signup');
   };
 
   return (
@@ -44,6 +47,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <button onClick={goToSignup}>Cadastrar</button>
     </div>
   );
 };
