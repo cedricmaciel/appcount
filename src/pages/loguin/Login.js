@@ -1,25 +1,26 @@
+// src/pages/loguin/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../config/firebaseConfig'; // Certifique-se de que o caminho está correto
 import './loguin.css';
 
-const Login1 = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Lógica de autenticação simulada
-    if (email === 'usuario@exemplo.com' && password === 'senha123') {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
       navigate('/acao');
-    } else {
-      alert('Credenciais inválidas');
+    } catch (error) {
+      alert('Credenciais inválidas: ' + error.message);
     }
   };
 
   return (
-
-    
     <div className="login-container">
       <h2 className="font-login">Login</h2>
       <form onSubmit={handleLogin}>
@@ -44,9 +45,7 @@ const Login1 = () => {
         <button type="submit">Login</button>
       </form>
     </div>
-    
   );
 };
 
-export default Login1;
-
+export default Login;

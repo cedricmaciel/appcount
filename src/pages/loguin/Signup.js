@@ -14,7 +14,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/acao'); // Navegar para a página desejada após o cadastro
+      navigate('/acao'); 
     } catch (error) {
       alert('Erro ao cadastrar usuário: ' + error.message);
     }
