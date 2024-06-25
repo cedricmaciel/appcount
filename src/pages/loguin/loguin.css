@@ -59,4 +59,13 @@
   .login-container button:hover {
     background-color: #0056b3;
   }
+
+  .btn-voltar{
+    margin-top: 15px;
+  }
+
+  .btn-cadastro{
+    margin-left: 170px;
+    margin-top: 15px;
+  }
   

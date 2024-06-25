@@ -47,7 +47,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
-      <button onClick={goToSignup}>Cadastrar</button>
+      <button className="btn-cadastro"onClick={goToSignup}>Cadastrar</button>
     </div>
   );
 };
