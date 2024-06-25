@@ -1,28 +1,29 @@
+// Signup.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebaseConfig';
 import './loguin.css';
 
-const Login1 = () => {
+const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    // Lógica de autenticação simulada
-    if (email === 'usuario@exemplo.com' && password === 'senha123') {
-      navigate('/acao');
-    } else {
-      alert('Credenciais inválidas');
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigate('/acao'); 
+    } catch (error) {
+      alert('Erro ao cadastrar usuário: ' + error.message);
     }
   };
 
   return (
-
-    
     <div className="login-container">
-      <h2 className="font-login">Login</h2>
-      <form onSubmit={handleLogin}>
+      <h2 className="font-login">Cadastro</h2>
+      <form onSubmit={handleSignup}>
         <div>
           <label className="font-font">Email:</label>
           <input
@@ -41,12 +42,10 @@ const Login1 = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Cadastrar</button>
       </form>
     </div>
-    
   );
 };
 
-export default Login1;
-
+export default Signup;
