@@ -12,12 +12,17 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword( email, password);
       navigate('/acao');
     } catch (error) {
       alert('Credenciais inválidas: ' + error.message);
     }
   };
+
+  const goToacao = () => {
+    navigate('/acao');
+
+  }
 
   const goToSignup = () => {
     navigate('/signup');
@@ -45,7 +50,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" onClick={goToacao}>Login</button>
       </form>
       <button className="btn-cadastro"onClick={goToSignup}>Cadastrar</button>
     </div>
